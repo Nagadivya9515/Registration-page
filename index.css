@@ -1,0 +1,53 @@
+.circle1 {
+    width: 30em;
+    height: 20em;
+    /* left: -25%; */
+    top: 8%;
+    background: radial-gradient(circle, rgb(20, 100, 120), #050505);
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-60%, -80%);
+}
+
+
+.circle3 {
+    width: 20%;
+    height: 36%;
+    background: radial-gradient(circle, rgb(9, 9, 9), rgb(20, 100, 120));
+    border-radius: 50%;
+    /* Make it a circle */
+    position: absolute;
+    left: 65%;
+    bottom: -3%;
+    /* Position 50% outside of the left edge of the screen */
+    /* top: 50%; */
+    animation: pulse 2s infinite alternate;
+    /* Center vertically */
+    /* transform: translate(80%, -96%); */
+    /* Center horizontally */
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.circle4 {
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, lightblue, rgb(20, 100, 120));
+    border-radius: 50%;
+    /* Make it a circle */
+    position: absolute;
+    /* left: -25%; */
+    /* Position 50% outside of the left edge of the screen */
+    /* top: 50%; */
+    /* Center vertically */
+    transform: translate(120%, -90%);
+    /* Center horizontally */
+}

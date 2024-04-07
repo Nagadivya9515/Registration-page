@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+ <div id="first">
+    <div class="circle1"></div>
+    <form id="form">
+    <!-- <div class="circle4"></div> -->
+    <!-- <div class="circle2"></div> -->
+        <h1 class="title">Registration</h1>
+        <table>
+            <tr><p class="name_msg"></p></tr>
+            <tr>
+                <td><h5>Full Name:</h5></td>
+                <td>
+                    <input type="text" id="name" value="Yalamarthi" autocomplete="given-name"/>
+                </td>
+            </tr>
+            <tr>
+                <p class="email_msg"></p>
+            </tr>
+            <tr>
+                <td><h5>Email Id:</h5></td>
+                <td>
+                    <input type="email" id="email" value="yalamarthi@gmail.com" autocomplete="off">
+                </td>
+            </tr>
+            <tr>
+                <p class="number_msg"></p>
+            </tr>
+            <tr>
+                <td><h5>Phone Number:</h5></td>
+                <td>
+                    <input type="number" id="number-10" value="9515501957"
+                    oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10)">
+                </td>
+            </tr>
+            <tr>
+                <p class="pass_msg"></p>
+            </tr>
+            <tr>
+                <td><h5>Password:</h5></td>
+                <td class="password-container">
+                    <input type="password" id="pass" value="fvdbdbbfgb">
+                    <button type="button" id="togglePassword" class="eye-icon" onclick="togglePasswordVisibility()">👁️</button>
+                </td>
+            </tr>
+            <tr>
+                <p class="confirm_msg"></p>
+            </tr>
+            <tr>
+                <td><h5>Confirm Password:</h5></td>
+                <td>
+                    <input type="password" id="confirm" value="fvdbdbbfgb">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="btn">Submit</button></td>
+            </tr>
+        </table>
+        <div class="circle3"></div>
+    </form>
+    
+</div>
+    <div class="content">
+        <h1>Company name</h1>
+        <h2>IT solutions & infrastructures</h2>
+    </div>
+    <script>
+      
+        var fullname = document.getElementById("name");
+        var email = document.querySelector("#email");
+        var number = document.querySelector("#number-10");
+        var pass = document.querySelector("#pass");        
+        var confirm = document.querySelector("#confirm");
+        var btn = document.getElementById("btn");
+
+        var name_msg = document.querySelector(".name_msg");
+        var email_msg = document.querySelector(".email_msg");
+        var number_msg = document.querySelector(".number_msg");
+        var pass_msg = document.querySelector(".pass_msg");
+        var confirm_msg = document.querySelector(".confirm_msg");
+
+       function fn(e) {
+        e.preventDefault();
+    if (fullname.value.length != 0) {
+    if (fullname.value.length > 5) {
+        if (number.value.length == 10 && number.value != "123456789") {
+            if (/^\d+$/.test(number.value)) {
+                if (pass.value != "password" || pass.value != fullname.value) {
+                    if (pass.value.length > 8) {
+                        if (pass.value == confirm.value) {
+                            console.log("success");
+                            window.location.replace("background.html");
+                            console.log("loading page 2");
+                    
+                        }
+                        else {
+                            confirm_msg.style.display = "block";
+                            confirm_msg.textContent = "Confirm Password is not matching";
+                        }
+                    }
+                    else {
+                        pass_msg.style.display = "block";
+                        pass_msg.textContent = "Password should contain more than 8 characters";
+                    }
+                }
+                else {
+                    pass_msg.style.display = "block";
+                    pass_msg.textContent = "Password cannot be your name";
+                }
+            }
+            else {
+                number_msg.style.display = "block";
+                number_msg.textContent = "Phone number should contain digits only";
+            }
+        }
+        else {
+            number_msg.style.display = "block";
+            number_msg.textContent = "Enter valid phone number";
+        }
+    }
+    else {
+        name_msg.style.display = "block";
+        name_msg.textContent = "Name should contain at least 5 characters";
+    }
+}
+else {
+    name_msg.style.display = "block";
+    name_msg.textContent = "!!!  Please enter name";
+}
+
+        document.getElementById("form").reset();
+    }
+
+    var form = document.querySelector('#form');
+    form.addEventListener('submit', fn);
+
+    function togglePasswordVisibility() {
+        var passInput = document.getElementById("pass");
+        var toggleBtn = document.getElementById("togglePassword");
+
+        if (passInput.type === "password") {
+            passInput.type = "text";
+            toggleBtn.textContent = "👁️‍🗨️";
+        } else {
+            passInput.type = "password";
+            toggleBtn.textContent = "👁️";
+        }
+    }
+    </script>
+</body>
+</html>
